@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒泡排序升序函数</title>
+    <script>
+        // 定义冒泡排序升序函数
+        function bubbleSort(arr) {
+            var temp;
+            for(var i=0;i<arr.length-1;i++) {
+                for(var j=0;j<arr.length-1-i;j++) {
+                    //因为之后的函数调用时，用到了prompt（第27行），让输入的数组元素全都变成了字符串，所以无法进行正常的‘数学’比较，应该将字符串类型强制转换成数字类型
+                    if(Number(arr[j])>Number(arr[j+1])) {
+                        temp=arr[j];
+                        arr[j]=arr[j+1];
+                        arr[j+1]=temp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        var newArr=[]; //定义一个空数组变量，此时数组长度为0
+        do {
+            newArr[newArr.length]=prompt('请依次输入数组的值，输入完最后一位值后，连点两次确定'); //先执行一次do，提示用户输入第一个值，并把该值赋给数组0位，完成以上操作后数组长度为1
+        } while(newArr[newArr.length-1]); //当前一个输入的值 非空（非false）时，继续执行以上的循环，直到输入的值为 空，才会跳出循环
+        newArr.length-=1; //因为最后一位 空 值也被输入了数组，所以让数组的长度length-1，抹去最后一位
+        alert('您输入的数组为：'+newArr+'\n'+'该数组的个数为：'+newArr.length+'\n'+'冒泡排序升序后：'+bubbleSort(newArr));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
